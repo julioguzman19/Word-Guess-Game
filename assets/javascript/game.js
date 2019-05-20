@@ -16,12 +16,12 @@ let typedLetters = [];
 
 document.onkeyup = function (event) {
    
-    if (alphabet.includes(event.key)) {
+    if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
         typedLetters.push(event.key);/*  inputting each character typed into array */
         console.log(typedLetters);
     } 
     else {
-        console.log("Not Valid Letter");
+        console.log("Not Valid Letter or already guessed");
     }
  
 }
