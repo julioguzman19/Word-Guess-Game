@@ -1,17 +1,3 @@
-
-/* function blanks (){
-    let wordArray = [];
-    
-    for (var i = 0; i < 3; i++){
-        wordArray[i] = "_";
-    }
-    document.getElementById("emptyFields").innerHTML = wordArray.join(" ");;
-}
-
-document.getElementById("emptyFields").onkeypress = function() {blanks()}; */
-
-
-
 /* Initializing game by creating empty fields */
 /* 3 will be changed to number randomizer based on word */
 let wordArray = []; 
@@ -28,7 +14,7 @@ document.getElementById("emptyFields").innerHTML = wordArray.join(" "); /* Displ
 let typedLetters = [];
 
 document.onkeyup = function(event){
-    typedLetters = event.key;
+    typedLetters.push(event.key);/*  inputting each character typed into array */
     console.log(typedLetters);
 }
 
