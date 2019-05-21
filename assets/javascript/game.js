@@ -6,8 +6,10 @@
 /* Initializing game by creating empty fields */
 /* 3 will be changed to number randomizer based on word */
 let wordArray = [];
+let words = ["goku","frieza"];
+let word = words[Math.floor(Math.random() * words.length)];
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 4; i++) {
     wordArray[i] = "_";
 }
 
@@ -21,13 +23,16 @@ let typedLetters = [];
 
 document.onkeyup = function (event) {
    
-    if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
+    if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
+        
+        
+        
         typedLetters.push(event.key);/*  inputting each character typed into array */
         console.log(typedLetters);
-        document.getElementById("guessedLetters").innerHTML = typedLetters;
+        document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");
     } 
     else {
-        console.log("Not Valid Letter or already guessed");
+        alert("Not Valid Letter or already guessed");
     }
  
 }
