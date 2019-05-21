@@ -1,3 +1,8 @@
+/* use this to start game with the press of any key */
+/* document.onkeyup = function (event) {
+    event.key
+} */
+
 /* Initializing game by creating empty fields */
 /* 3 will be changed to number randomizer based on word */
 let wordArray = [];
@@ -19,6 +24,7 @@ document.onkeyup = function (event) {
     if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
         typedLetters.push(event.key);/*  inputting each character typed into array */
         console.log(typedLetters);
+        document.getElementById("guessedLetters").innerHTML = typedLetters;
     } 
     else {
         console.log("Not Valid Letter or already guessed");
@@ -26,9 +32,7 @@ document.onkeyup = function (event) {
  
 }
 
-/* document.onkeyup = function (event) {
-    event.key
-} */
+
 
 
 
