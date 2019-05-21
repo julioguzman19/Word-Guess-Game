@@ -11,6 +11,7 @@ let word = words[Math.floor(Math.random() * words.length)];
 let wordChars = word.length;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let typedLetters = [];
+let blank = "_";
 
 for (var i = 0; i < wordChars; i++) {
     guessingWord += "_ ";
@@ -23,15 +24,16 @@ document.onkeyup = function (event) {
    
     if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
         
-        /* index of wont give you multiple positions of letter i think */
+        /* ISSUE: letter pertaining to word nothing is happening need to replace at char level and also for loop should only do odd as even will be blanks (add 1 to i every time) */
+        
         for (var i = 0; i < wordChars; i++) { 
             if(word.charAt(i) === event.key){
-                guessingWord.charAt(i) = event.key;
-                document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
+                event.key += guessingWord.charAt(i);
+                document.getElementById("a").innerHTML = guessingWord;
             }
             else{
-                guessingWord.charAt(i) = "_"
-                document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
+                blank += guessingWord.charAt(i);
+                document.getElementById("b").innerHTML = guessingWord;
             }
         }
         
