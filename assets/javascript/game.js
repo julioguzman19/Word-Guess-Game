@@ -13,7 +13,7 @@ let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 let typedLetters = [];
 let blank = "_";
 
-for (var i = 0; i < wordChars; i++) {
+for (let i = 0; i < wordChars; i++) {
     guessingWord[i] = "_";
 }
 
@@ -26,8 +26,8 @@ document.onkeyup = function (event) {
         
         /* ISSUE: letter pertaining to word nothing is happening need to replace at char level and also for loop should only do odd as even will be blanks (add 1 to i every time) */
         
-        for (var i = 0; i < wordChars; i++) { 
-            if(guessingWord[i] === event.key){
+        for (let i = 0; i < wordChars; i++) { 
+            if(word[i] === event.key){
                 guessingWord[i] = event.key;
                 document.getElementById("emptyFields").innerHTML = guessingWord;
             }
