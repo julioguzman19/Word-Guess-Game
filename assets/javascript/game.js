@@ -24,22 +24,17 @@ document.onkeyup = function (event) {
    
     if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
         
-        /* ISSUE: letter pertaining to word nothing is happening need to replace at char level and also for loop should only do odd as even will be blanks (add 1 to i every time) */
-        
         for (let i = 0; i < wordChars; i++) { 
             if(word[i] === event.key){
                 guessingWord[i] = event.key;
                 document.getElementById("emptyFields").innerHTML = guessingWord;
             }
             else{
-                guessingWord[i] === event.key;
                 document.getElementById("emptyFields").innerHTML = guessingWord;
             }
-        }
-        
+        }    
     } 
     else if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
-        alert("Guessed letter");
         typedLetters.push(event.key);
         document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  /*  inputting each character typed into array */
     }
