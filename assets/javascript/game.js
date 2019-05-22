@@ -5,7 +5,7 @@
 
 /* Initializing game by creating empty fields */
 /* 3 will be changed to number randomizer based on word */
-let guessingWord = "";
+let guessingWord = [];
 let words = ["goku","frieza"];
 let word = words[Math.floor(Math.random() * words.length)];
 let wordChars = word.length;
@@ -14,10 +14,10 @@ let typedLetters = [];
 let blank = "_";
 
 for (var i = 0; i < wordChars; i++) {
-    guessingWord += "_ ";
+    guessingWord[i] = "_";
 }
 
-document.getElementById("emptyFields").innerHTML = guessingWord; /* Display blanks fields into page */
+document.getElementById("emptyFields").innerHTML = guessingWord.join(" "); /* Display blanks fields into page */
 
 /* Capturing User's Letters and confirming if in word */
 document.onkeyup = function (event) {
@@ -27,13 +27,13 @@ document.onkeyup = function (event) {
         /* ISSUE: letter pertaining to word nothing is happening need to replace at char level and also for loop should only do odd as even will be blanks (add 1 to i every time) */
         
         for (var i = 0; i < wordChars; i++) { 
-            if(word.charAt(i) === event.key){
-                event.key += guessingWord.charAt(i);
-                document.getElementById("a").innerHTML = guessingWord;
+            if(guessingWord[i] === event.key){
+                guessingWord[i] = event.key;
+                document.getElementById("emptyFields").innerHTML = guessingWord;
             }
             else{
-                blank += guessingWord.charAt(i);
-                document.getElementById("b").innerHTML = guessingWord;
+                guessingWord[i] === event.key;
+                document.getElementById("emptyFields").innerHTML = guessingWord;
             }
         }
         
