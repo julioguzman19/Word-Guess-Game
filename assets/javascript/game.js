@@ -1,7 +1,13 @@
 /* use this to start game with the press of any key */
-/* document.onkeyup = function (event) {
-    event.key
-} */
+document.onkeyup = function (event) {
+    alert("Press any key to start the game!");
+        if(event.key){
+            return;
+        }
+        else{
+            alert("Still no key pressed");
+        }
+}
 
 /* Initializing game by declaring variables and creating empty fields */
 let guessingWord = [];
@@ -21,16 +27,6 @@ document.getElementById("emptyFields").innerHTML = guessingWord.join(" "); /* Di
 
 /* Capturing User's Letters and confirming if in word */
 document.onkeyup = function (event) {
-   
-    if(turns === 9){ /* exits the functions with 9 wrong guesses */
-        alert("You lost!");
-        return;
-    }
-
-    if(!guessingWord.includes("_")){ /* exits the function once there are not anymore blanks fields for letters to be guessed */
-        alert("You won!");
-        return;
-    }
 
     if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
         
@@ -38,6 +34,11 @@ document.onkeyup = function (event) {
             if(word[i] === event.key){
                 guessingWord[i] = event.key;
                 document.getElementById("emptyFields").innerHTML = guessingWord;
+
+                if(!guessingWord.includes("_")){ /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
+                    alert("You won!");
+                    return;
+                }
             }
             else{
                 document.getElementById("emptyFields").innerHTML = guessingWord;
@@ -48,6 +49,10 @@ document.onkeyup = function (event) {
         typedLetters.push(event.key);
         document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  /*  inputting each incorrect letter typed into array */
         turns +=1; 
+            if(turns === 9){ /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
+                alert("You lost!");
+                return;
+            }
     }
     else{
         alert("Not a valid character or already guessed");
