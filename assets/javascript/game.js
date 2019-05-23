@@ -55,7 +55,7 @@ document.onkeyup = function (event) {
             }
     }
     else{
-        alert("Not a valid character or already guessed");
+        alert("Not a valid letter or already guessed");
     }  
 }
 
