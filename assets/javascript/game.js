@@ -27,6 +27,11 @@ document.onkeyup = function (event) {
         return;
     }
 
+    if(!guessingWord.includes("_")){ /* exits the function once there are not anymore blanks fields for letters to be guessed */
+        alert("You won!");
+        return;
+    }
+
     if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
         
         for (let i = 0; i < wordChars; i++) { 
