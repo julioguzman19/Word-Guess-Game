@@ -10,7 +10,7 @@ let word = words[Math.floor(Math.random() * words.length)];
 let wordChars = word.length;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let typedLetters = [];
-let turns = 0;
+let turns = 0; /* using to end game once 9 wrong guesses typed */
 
 for (let i = 0; i < wordChars; i++) {
     guessingWord[i] = "_";
@@ -23,6 +23,7 @@ document.getElementById("emptyFields").innerHTML = guessingWord.join(" "); /* Di
 document.onkeyup = function (event) {
    
     if(turns === 9){ /* exits the functions with 9 wrong guesses */
+        alert("You lost!");
         return;
     }
 
@@ -45,9 +46,7 @@ document.onkeyup = function (event) {
     }
     else{
         alert("Not a valid character or already guessed");
-    }
-
-  
+    }  
 }
 
 
