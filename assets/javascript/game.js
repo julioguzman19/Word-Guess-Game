@@ -10,7 +10,7 @@ let word = words[Math.floor(Math.random() * words.length)];
 let wordChars = word.length;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let typedLetters = [];
-let turns = 9;
+let turns = 0;
 
 for (let i = 0; i < wordChars; i++) {
     guessingWord[i] = "_";
@@ -22,6 +22,10 @@ document.getElementById("emptyFields").innerHTML = guessingWord.join(" "); /* Di
 /* Capturing User's Letters and confirming if in word */
 document.onkeyup = function (event) {
    
+    if(turns === 9){ /* exits the functions with 9 wrong guesses */
+        return;
+    }
+
     if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
         
         for (let i = 0; i < wordChars; i++) { 
@@ -37,11 +41,13 @@ document.onkeyup = function (event) {
     else if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
         typedLetters.push(event.key);
         document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  /*  inputting each incorrect letter typed into array */
-        
+        turns +=1; 
     }
     else{
         alert("Not a valid character or already guessed");
     }
+
+  
 }
 
 
