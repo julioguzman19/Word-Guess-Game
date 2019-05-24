@@ -30,20 +30,22 @@ document.onkeyup = function (event) {
 
     if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
         
-        for (let i = 0; i < wordChars; i++) { 
-            if(word[i] === event.key){
-                guessingWord[i] = event.key;
-                document.getElementById("emptyFields").innerHTML = guessingWord;
+        if(guessingWord.includes("_") && turns < 9){
+            for (let i = 0; i < wordChars; i++) { 
+                if(word[i] === event.key){
+                    guessingWord[i] = event.key;
+                    document.getElementById("emptyFields").innerHTML = guessingWord;
 
-                if(!guessingWord.includes("_")){ /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
-                    alert("You won!");
-                    return;
+                    if(!guessingWord.includes("_")){ /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
+                        alert("You won!");
+                        return;
+                    }
                 }
-            }
-            else{
-                document.getElementById("emptyFields").innerHTML = guessingWord;
-            }
-        }    
+                else{
+                    document.getElementById("emptyFields").innerHTML = guessingWord;
+                }
+            }    
+        } 
     } 
     else if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
 
