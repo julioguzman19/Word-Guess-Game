@@ -48,7 +48,8 @@ document.onkeyup = function (event) {
     else if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
         typedLetters.push(event.key);
         document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  /*  inputting each incorrect letter typed into array */
-        turns +=1; 
+        turns +=1;
+        document.getElementById("guessRemaining").innerHTML = parseInt(9 - turns); 
             if(turns === 9){ /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
                 alert("You lost!");
                 return;
@@ -57,6 +58,7 @@ document.onkeyup = function (event) {
     else{
         alert("Not a valid letter or already guessed");
     }  
+    
 }
 
 
