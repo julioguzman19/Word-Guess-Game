@@ -33,21 +33,22 @@ document.onkeydown = function (event) {
         }     
 }
 
-
 function checkLetterInWord(letter){
     if (guessingWord.includes("_") && turns < 4) {
         for (let i = 0; i < wordChars; i++) {
             if (word[i] === letter) {
                 guessingWord[i] = letter;
-                document.getElementById("emptyFields").innerHTML = guessingWord;
+                document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
 
                 if (!guessingWord.includes("_")) { /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
-                    alert("You won!");
+                    wins++;
+                    alert("You won! " + wins);
+                    resetGame();
                     return;
                 }
             }
             else {
-                document.getElementById("emptyFields").innerHTML = guessingWord;
+                document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
             }
         }
     } 
@@ -63,8 +64,9 @@ function checkWrongLetter(letter){
         document.getElementById("guessRemaining").innerHTML = parseInt(4 - turns); 
             
             if(turns === 4){ /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
-                alert("You lost!");
-               
+                losses ++; 
+                alert("You lost!"+losses);
+                resetGame();
                 return;
         }
     }
@@ -73,12 +75,24 @@ function checkWrongLetter(letter){
 function checkKeyLetterAndDupe(){
 
     if(guessingWord.includes("_") && turns < 4){
-
         alert("Not a valid letter or already guessed");
         return;
     }
 }
 
+function resetGame(){
+    turns = 0;
+    word = words[Math.floor(Math.random() * words.length)];
+    guessingWord = [];
+    typedLetters = [];
+    wordChars = word.length;
+
+    for (let i = 0; i < wordChars; i++) {
+        guessingWord[i] = "_";
+    }
+    document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
+    document.getElementById("guessRemaining").innerHTML = parseInt(4 - turns);
+}
 
 
 
