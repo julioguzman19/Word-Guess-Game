@@ -19,57 +19,65 @@ document.getElementById("emptyFields").innerHTML = guessingWord.join(" "); /* Di
 /* Capturing User's Letters and confirming if in word */
 document.onkeydown = function (event) {
 
- 
-
         if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
             
-            if(guessingWord.includes("_") && turns < 4){
-                for (let i = 0; i < wordChars; i++) { 
-                    if(word[i] === event.key){
-                        guessingWord[i] = event.key;
-                        document.getElementById("emptyFields").innerHTML = guessingWord;
-
-                        if(!guessingWord.includes("_")){ /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
-                            alert("You won!");
-                           
-                            return;
-                        }
-                    }
-                    else{
-                        document.getElementById("emptyFields").innerHTML = guessingWord;
-                    }
-                }    
-            } 
+            checkLetterInWord(event.key);
         } 
         else if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
 
-            if(guessingWord.includes("_") && turns < 4){
-            
-                typedLetters.push(event.key);
-                document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  /*  inputting each incorrect letter typed into array */
-                turns +=1;
-                document.getElementById("guessRemaining").innerHTML = parseInt(9 - turns); 
-                    
-                    if(turns === 9){ /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
-                        alert("You lost!");
-                       
-                        return;
-                }
-            }
+            checkWrongLetter(event.key);
         }
         else{
 
-            if(guessingWord.includes("_") && turns < 4){
-
-                alert("Not a valid letter or already guessed");
-                return;
-            }
-        }  
-    
- 
+            checkKeyLetterAndDupe();
+        }     
 }
 
 
+function checkLetterInWord(letter){
+    if (guessingWord.includes("_") && turns < 4) {
+        for (let i = 0; i < wordChars; i++) {
+            if (word[i] === letter) {
+                guessingWord[i] = letter;
+                document.getElementById("emptyFields").innerHTML = guessingWord;
+
+                if (!guessingWord.includes("_")) { /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
+                    alert("You won!");
+                    return;
+                }
+            }
+            else {
+                document.getElementById("emptyFields").innerHTML = guessingWord;
+            }
+        }
+    } 
+}
+
+function checkWrongLetter(letter){
+
+    if(guessingWord.includes("_") && turns < 4){
+            
+        typedLetters.push(letter);
+        document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  /*  inputting each incorrect letter typed into array */
+        turns +=1;
+        document.getElementById("guessRemaining").innerHTML = parseInt(4 - turns); 
+            
+            if(turns === 4){ /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
+                alert("You lost!");
+               
+                return;
+        }
+    }
+}
+
+function checkKeyLetterAndDupe(){
+
+    if(guessingWord.includes("_") && turns < 4){
+
+        alert("Not a valid letter or already guessed");
+        return;
+    }
+}
 
 
 
