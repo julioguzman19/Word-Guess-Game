@@ -18,6 +18,8 @@ document.getElementById("emptyFields").innerHTML = guessingWord.join(" "); /* Di
 
 /* Capturing User's Letters and confirming if in word */
 document.onkeydown = function (event) {
+        
+        stopAudio()
 
         if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
             
@@ -83,14 +85,24 @@ function checkKeyLetterAndDupe(){
 }
 
 function playWinAudio(){
-    let x = document.getElementById("myWinAudio");
-    x.play();
+    let audioWin = document.getElementById("myWinAudio");
+    audioWin.play();
 }
 
 function playLoseAudio(){
-    let y = document.getElementById("myLoseAudio");
-    y.play();
+    let audioLose = document.getElementById("myLoseAudio");
+    audioLose.play();
 }
+
+function stopAudio(){
+    let stopWinAudio = document.getElementById("myWinAudio");
+    let stopLoseAudio= document.getElementById("myLoseAudio");
+    stopWinAudio.pause();
+    stopWinAudio.currentTime = 0.0;
+    stopLoseAudio.pause();
+    stopLoseAudio.currentTime = 0.0;
+}
+
 
 function resetGame(){
     turns = 0;
@@ -104,6 +116,8 @@ function resetGame(){
     }
     document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
     document.getElementById("guessRemaining").innerHTML = parseInt(4 - turns);
+    document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");
+   
 }
 
 
