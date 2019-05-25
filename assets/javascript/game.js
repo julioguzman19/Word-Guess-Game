@@ -42,6 +42,7 @@ function checkLetterInWord(letter){
 
                 if (!guessingWord.includes("_")) { /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
                     wins++;
+                    playWinAudio();
                     alert("You won! " + wins);
                     resetGame();
                     return;
@@ -65,7 +66,7 @@ function checkWrongLetter(letter){
             
             if(turns === 4){ /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
                 losses ++; 
-                alert("You lost!"+losses);
+                alert("You lost! The word was "+word +losses);
                 resetGame();
                 return;
         }
@@ -78,6 +79,11 @@ function checkKeyLetterAndDupe(){
         alert("Not a valid letter or already guessed");
         return;
     }
+}
+
+function playWinAudio(){
+    let x = document.getElementById("myAudio");
+    x.play();
 }
 
 function resetGame(){
