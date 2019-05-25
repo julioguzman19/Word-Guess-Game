@@ -66,6 +66,7 @@ function checkWrongLetter(letter){
             
             if(turns === 4){ /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
                 losses ++; 
+                playLoseAudio();
                 alert("You lost! The word was "+word +losses);
                 resetGame();
                 return;
@@ -82,8 +83,13 @@ function checkKeyLetterAndDupe(){
 }
 
 function playWinAudio(){
-    let x = document.getElementById("myAudio");
+    let x = document.getElementById("myWinAudio");
     x.play();
+}
+
+function playLoseAudio(){
+    let y = document.getElementById("myLoseAudio");
+    y.play();
 }
 
 function resetGame(){
