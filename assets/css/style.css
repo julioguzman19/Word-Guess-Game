@@ -1,7 +1,15 @@
 body{
-    float:left;
-    width: 100%;
-    text-align: center;
+   background-color: red;
+   font-family: cursive;
+   font-size: 30px;
+}
 
+.container{
+    background-color: blue;
+  /*   clear:both;*/
     
+    margin:auto;
+    margin-top:2%;
+    text-align: center; 
+    width:320px;
 }
