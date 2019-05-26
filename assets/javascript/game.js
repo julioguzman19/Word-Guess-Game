@@ -35,10 +35,10 @@ document.onkeydown = function (event) {
 
             checkWrongLetter(event.key);
         }
-        else{
+  /*       else{
 
             checkKeyLetterAndDupe();
-        }     
+        }   */   
         
 }
 
