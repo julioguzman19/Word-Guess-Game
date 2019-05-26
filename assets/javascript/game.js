@@ -1,6 +1,9 @@
 /* Initializing game by declaring variables and creating empty fields */
 let guessingWord = [];
-let words = ["pizza","tacos"];
+let words = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen",
+            "eighteen","nineteen","twenty","twentyone","twentytwo","twentythree","twentyfour","twentyfive","twentysix","twentyseven","twentyeight",
+            "twentynine","thirty","thirtyone","thirtytwo","thirtythree","thirtyfour","thirtyfive","thirtysix","thirtyseven","thirtyeight","thirtynine",
+            "forty","fortyone","fortytwo","fortythree","fortyfive","fortysix","fortyseven","fortyeight","fortynine","fifty"];
 let word = words[Math.floor(Math.random() * words.length)];
 let wordChars = word.length;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -14,12 +17,15 @@ for (let i = 0; i < wordChars; i++) {
 }
 
 document.getElementById("emptyFields").innerHTML = guessingWord.join(" "); /* Display blanks fields into page */
+document.getElementById("guessRemaining").innerHTML = 3; /* Display turns */
+document.getElementById("totalWins").innerHTML = wins;
+document.getElementById("totalLosses").innerHTML = losses;
 
 
 /* Capturing User's Letters and confirming if in word */
 document.onkeydown = function (event) {
         
-        stopAudio()
+        stopAudio();
 
         if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
             
@@ -33,10 +39,11 @@ document.onkeydown = function (event) {
 
             checkKeyLetterAndDupe();
         }     
+        
 }
 
 function checkLetterInWord(letter){
-    if (guessingWord.includes("_") && turns < 4) {
+    if (guessingWord.includes("_") && turns < 3) {
         for (let i = 0; i < wordChars; i++) {
             if (word[i] === letter) {
                 guessingWord[i] = letter;
@@ -44,8 +51,8 @@ function checkLetterInWord(letter){
 
                 if (!guessingWord.includes("_")) { /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
                     wins++;
+                    document.getElementById("totalWins").innerHTML = wins;
                     playWinAudio();
-                    alert("You won! " + wins);
                     resetGame();
                     return;
                 }
@@ -59,26 +66,26 @@ function checkLetterInWord(letter){
 
 function checkWrongLetter(letter){
 
-    if(guessingWord.includes("_") && turns < 4){
+    if(guessingWord.includes("_") && turns < 3){
             
         typedLetters.push(letter);
         document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  /*  inputting each incorrect letter typed into array */
         turns +=1;
-        document.getElementById("guessRemaining").innerHTML = parseInt(4 - turns); 
+        document.getElementById("guessRemaining").innerHTML = parseInt(3 - turns); 
             
-            if(turns === 4){ /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
-                losses ++; 
-                playLoseAudio();
-                alert("You lost! The word was "+word +losses);
-                resetGame();
-                return;
+        if (turns === 3) { /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
+            losses++;
+            playLoseAudio();
+            document.getElementById("totalLosses").innerHTML = losses;
+            resetGame();
+            return;
         }
     }
 }
 
 function checkKeyLetterAndDupe(){
 
-    if(guessingWord.includes("_") && turns < 4){
+    if(guessingWord.includes("_") && turns < 3){
         alert("Not a valid letter or already guessed");
         return;
     }
@@ -115,9 +122,10 @@ function resetGame(){
         guessingWord[i] = "_";
     }
     document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
-    document.getElementById("guessRemaining").innerHTML = parseInt(4 - turns);
+    document.getElementById("guessRemaining").innerHTML = parseInt(3 - turns);
     document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");
-   
+
+    
 }
 
 
