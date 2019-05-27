@@ -3,7 +3,8 @@ let guessingWord = [];
 let words = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen",
             "eighteen","nineteen","twenty","twentyone","twentytwo","twentythree","twentyfour","twentyfive","twentysix","twentyseven","twentyeight",
             "twentynine","thirty","thirtyone","thirtytwo","thirtythree","thirtyfour","thirtyfive","thirtysix","thirtyseven","thirtyeight","thirtynine",
-            "forty","fortyone","fortytwo","fortythree","fortyfive","fortysix","fortyseven","fortyeight","fortynine","fifty"];
+            "forty","fortyone","fortytwo","fortythree","fortyfive","fortysix","fortyseven","fortyeight","fortynine","fifty","fiftyone",
+            "fiftytwo","fiftythree","fiftyfour","fiftyfive","fiftysix","fiftyseven","fiftyeight","fiftynine","sixty"];
 let word = words[Math.floor(Math.random() * words.length)];
 let wordChars = word.length;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
