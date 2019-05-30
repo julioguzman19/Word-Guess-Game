@@ -4,7 +4,9 @@ let words = ["one","two","three","four","five","six","seven","eight","nine","ten
             "eighteen","nineteen","twenty","twentyone","twentytwo","twentythree","twentyfour","twentyfive","twentysix","twentyseven","twentyeight",
             "twentynine","thirty","thirtyone","thirtytwo","thirtythree","thirtyfour","thirtyfive","thirtysix","thirtyseven","thirtyeight","thirtynine",
             "forty","fortyone","fortytwo","fortythree","fortyfive","fortysix","fortyseven","fortyeight","fortynine","fifty","fiftyone",
-            "fiftytwo","fiftythree","fiftyfour","fiftyfive","fiftysix","fiftyseven","fiftyeight","fiftynine","sixty"];
+            "fiftytwo","fiftythree","fiftyfour","fiftyfive","fiftysix","fiftyseven","fiftyeight","fiftynine","sixty","sixtyone","sixtytwo",
+            "sixtythree","sixtyfour","sixtyfive","sixtysix","sixtyseven","sixtyeight","sixtynine","seventy","seventyone","seventytwo","seventythree",
+            "seventyfour","seventyfive","seventysix","seventyseven","seventyeight","seventynine","eighty"];
 let word = words[Math.floor(Math.random() * words.length)];
 let wordChars = word.length;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
