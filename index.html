@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en-us">
 
+<!--Audio for Win and Lose-->
 <audio id="myWinAudio">
     <source src="assets/audio/All I do is win.mp3" type = "audio/mp3" >
 </audio>
@@ -9,6 +10,7 @@
     <source src="assets/audio/BeatlesLoser.mp3" type = "audio/mp3" >
 </audio>
 
+<!--Title and CSS linkage-->
 <head>
     <meta charset="UTF-8">
     <title>Word Guess Game</title>
@@ -21,25 +23,29 @@
         <div>
         <h1>Press any key to get started!</h1>
         </div>
-
+        
+        <!--Correct letters guessed to display here-->
         <div>
             <br></br>
             <h1>Word</h1>
             <p id="emptyFields"></p>
         </div>
 
+        <!--Incorrect letters guessed to display here-->
         <div>
             <br></br>
             <h1>Letters already guessed</h1>
             <p id="guessedLetters"></p>
         </div>
-
+        
+        <!--# of guess remaining to display here-->
         <div>
             <br></br>
             <h1>Guesses Remaining</h1>
             <p id="guessRemaining"></p>
         </div>
 
+        <!--# of Wins and Losses to display here-->
         <div>
             <br></br>
             <h1>WINS</h1>
@@ -50,7 +56,7 @@
     </div>
   
 
-    <!-- in the bottom so our document is ready by the time javascript starts loading -->
+    <!-- Javascript file - bottom allows document to load first -->
     <script src="assets/javascript/game.js"></script>
 
 </body>

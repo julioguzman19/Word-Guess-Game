@@ -1,4 +1,4 @@
-/* Initializing game by declaring variables and creating empty fields */
+/* Initializing game by declaring variables and arrays*/
 let guessingWord = [];
 let words = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen",
             "eighteen","nineteen","twenty","twentyone","twentytwo","twentythree","twentyfour","twentyfive","twentysix","twentyseven","twentyeight",
@@ -15,44 +15,43 @@ let turns = 0; /* using to end game once 9 wrong guesses typed */
 let wins = 0;
 let losses = 0;
 
+/*Getting number of characters from word for '_' replacement */
 for (let i = 0; i < wordChars; i++) {
     guessingWord[i] = "_";
 }
 
+/*Display empty fields where word will be produce, # of guesses, # of Wins, # of Losses */
 document.getElementById("emptyFields").innerHTML = guessingWord.join(" "); /* Display blanks fields into page */
 document.getElementById("guessRemaining").innerHTML = 3; /* Display turns */
 document.getElementById("totalWins").innerHTML = wins;
 document.getElementById("totalLosses").innerHTML = losses;
 
-
 /* Capturing User's Letters and confirming if in word */
 document.onkeydown = function (event) {
-        
+        /*Stops audio, if playing, when key is pressed*/
         stopAudio();
-
-        if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { /* checking valid letter and not already typed and if correct */
-            
+        
+        /* checking valid letter and not already typed and if correct */
+        if (alphabet.includes(event.key) && !typedLetters.includes(event.key) && word.includes(event.key)) { 
             checkLetterInWord(event.key);
         } 
-        else if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { /* checking valid letter and not already typed */
-
+        /* checking valid letter and not already typed */
+        else if (alphabet.includes(event.key) && !typedLetters.includes(event.key)) { 
             checkWrongLetter(event.key);
         }
-  /*       else{
-
-            checkKeyLetterAndDupe();
-        }   */   
-        
+       
 }
 
+/*Checks if letter is in the word*/
 function checkLetterInWord(letter){
     if (guessingWord.includes("_") && turns < 3) {
         for (let i = 0; i < wordChars; i++) {
+            /*Loops through letters in word to check if your typed letter is in it. If yes then it replace blank field with letter*/
             if (word[i] === letter) {
                 guessingWord[i] = letter;
                 document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
-
-                if (!guessingWord.includes("_")) { /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
+                /* exits the function once there are not anymore blanks fields for letters to be guessed this might have to be inserted in if statement */
+                if (!guessingWord.includes("_")) { 
                     wins++;
                     document.getElementById("totalWins").innerHTML = wins;
                     playWinAudio();

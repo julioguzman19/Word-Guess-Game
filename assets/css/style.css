@@ -1,13 +1,11 @@
+/*Background color and font-size*/
 body{
-   background-color: red;
-   font-family: cursive;
+   background-color: rgba(116, 108, 108, 0.247);
    font-size: 30px;
 }
-
+/*Background color, size, and alignment on container*/
 .container{
-    background-color: blue;
-  /*   clear:both;*/
-    
+    background-color: rgb(249, 249, 250);
     margin:auto;
     margin-top:2%;
     text-align: center; 
