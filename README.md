@@ -13,3 +13,8 @@ Game is Over:
 - Depending if you Win or Lose: This will be tallied on your Win Loss Stats
 - Depending if you Win or Lose: Song will be played
 - To start next game can press any key
+
+Languages & Framework:
+- HTML
+- CSS
+- JavaScript
