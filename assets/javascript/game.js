@@ -66,16 +66,16 @@ function checkLetterInWord(letter){
     } 
 }
 
+//If wrong letter run this function
 function checkWrongLetter(letter){
 
     if(guessingWord.includes("_") && turns < 3){
-            
         typedLetters.push(letter);
-        document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  /*  inputting each incorrect letter typed into array */
+        document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");  
         turns +=1;
         document.getElementById("guessRemaining").innerHTML = parseInt(3 - turns); 
-            
-        if (turns === 3) { /* exits the functions with 9 wrong guessesthis might have to be inserted in else if */
+        //Reset game and capture loss if you run out of turns
+        if (turns === 3) { 
             losses++;
             playLoseAudio();
             document.getElementById("totalLosses").innerHTML = losses;
@@ -85,6 +85,7 @@ function checkWrongLetter(letter){
     }
 }
 
+//Checking key is letter and not already dupe
 function checkKeyLetterAndDupe(){
 
     if(guessingWord.includes("_") && turns < 3){
@@ -93,16 +94,19 @@ function checkKeyLetterAndDupe(){
     }
 }
 
+//Audio to be played on win
 function playWinAudio(){
     let audioWin = document.getElementById("myWinAudio");
     audioWin.play();
 }
 
+//Audio to be played on loss
 function playLoseAudio(){
     let audioLose = document.getElementById("myLoseAudio");
     audioLose.play();
 }
 
+//Audio to stop on refresh of page
 function stopAudio(){
     let stopWinAudio = document.getElementById("myWinAudio");
     let stopLoseAudio= document.getElementById("myLoseAudio");
@@ -112,7 +116,7 @@ function stopAudio(){
     stopLoseAudio.currentTime = 0.0;
 }
 
-
+//Game to be resetted when out of turns or word guessed
 function resetGame(){
     turns = 0;
     word = words[Math.floor(Math.random() * words.length)];
@@ -125,9 +129,7 @@ function resetGame(){
     }
     document.getElementById("emptyFields").innerHTML = guessingWord.join(" ");
     document.getElementById("guessRemaining").innerHTML = parseInt(3 - turns);
-    document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");
-
-    
+    document.getElementById("guessedLetters").innerHTML = typedLetters.join(" ");    
 }
 
 
