@@ -6,7 +6,7 @@ body{
 }
 /*Background color, size, and alignment on container*/
 .container{
-    background: rgb(249, 249, 250);
+    background: rgba(221, 221, 230, 0.973);
     border-radius: 50px;
     margin:auto;
     margin-top:2%;
