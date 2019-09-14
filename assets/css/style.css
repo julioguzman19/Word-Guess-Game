@@ -1,11 +1,13 @@
 /*Background color and font-size*/
 body{
-   background-color: rgba(116, 108, 108, 0.247);
+   background:url(/assets/images/background.jpg);
+   background-size: cover;
    font-size: 30px;
 }
 /*Background color, size, and alignment on container*/
 .container{
-    background-color: rgb(249, 249, 250);
+    background: rgb(249, 249, 250);
+    border-radius: 50px;
     margin:auto;
     margin-top:2%;
     text-align: center; 
