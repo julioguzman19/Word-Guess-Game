@@ -1,6 +1,6 @@
 /*Background color and font-size*/
 body{
-   background:url(../images/background.jpg);
+   background:url("../images/background.jpg");
    background-size: cover;
    font-size: 30px;
 }
