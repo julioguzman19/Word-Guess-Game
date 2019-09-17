@@ -1,10 +1,9 @@
 /*Background color and font-size*/
-.back{
-    background:url("/assets/images/background.jpg");
-    background-size: cover;
-    font-size: 30px;
+body{
+   background:url("../images/background.jpg");
+   background-size: cover;
+   font-size: 30px;
 }
-
 /*Background color, size, and alignment on container*/
 .container{
     background: rgba(221, 221, 230, 0.973);
